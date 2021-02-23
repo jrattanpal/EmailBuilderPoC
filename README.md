@@ -1,5 +1,5 @@
 ## How to setup this component
-- Sign up LogMeIn Developer account
+- Sign up LogMeIn Developer account: Setup oAuthClient, get client ID and Secret
 - Setup AUth Provider and named credentials with following information
 Used https://salesforce.stackexchange.com/questions/252277/named-credential-for-gotowebinar-app-oauth-v2-0
   - Using Client ID and Secret from LogMeIn
