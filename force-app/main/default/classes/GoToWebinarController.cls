@@ -1,0 +1,23 @@
+public with sharing class GoToWebinarController {
+    public static String getWebinarList(String accountKey){
+        return getWebinarList(accountKey, '2020-03-13T10:00:00Z', '2022-03-13T22:00:00Z');
+    }
+    public static String getWebinarList(String accountKey, String fromTime, String toTime){
+        String webinarJson = null;
+        try{
+            HttpRequest req = new HttpRequest();
+            
+            req.setEndpoint('callout:GoToWebinar_EmailBuilder_PoC/G2W/rest/v2/accounts/'+accountKey+'/webinars?fromTime='+fromTime+'&toTime='+toTime);
+            req.setMethod('GET');
+            System.debug(req);
+            Http http = new Http();
+            HTTPResponse res = http.send(req);
+            webinarJson = res.getBody();
+
+        }catch(Exception e){
+            System.debug('Exception:GoToWebinarController:getWebinarList(): ' + e.getMessage());
+        }
+
+        return webinarJson;
+    }
+}
