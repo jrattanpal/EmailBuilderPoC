@@ -6,14 +6,36 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
     }
     global override VisualEditor.DynamicPickListRows getValues() {
         VisualEditor.DynamicPickListRows  myValues = new VisualEditor.DynamicPickListRows();
-        //VisualEditor.DataRow value ;
-/*
+
 
         String subject1 = 'Sample Webinar 1';
         String description1 = 'https://1attendee.gotowebinar.com/register/6684463761998315009';
         VisualEditor.DataRow value = new VisualEditor.DataRow(subject1, description1);
         myValues.addRow(value);
-        */
+
+        
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+        /* */
+
+
+        return myValues;
+        
+    /*
+
+        HttpRequest req = new HttpRequest();
+            
+            req.setEndpoint('callout:GoToWebinar_EmailBuilder_PoC/G2W/rest/v2/accounts/'+accountKey+'/webinars?fromTime='+fromTime+'&toTime='+toTime);
+            req.setMethod('GET');
+            System.debug(req);
+            Http http = new Http();
+            HTTPResponse res = http.send(req);
+            webinarJson = res.getBody();
+        //VisualEditor.DataRow value ;
+
         
         Map<String, String>  configMap = ConfigurationController.viewEmailBuilderAppSettings();
         String json = GotoWebinarController.getWebinarList(configMap.get('accountKey'));
