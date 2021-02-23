@@ -1,15 +1,4 @@
-- Class: configurationController
-  - viewConfiguration(String: custMetadataTypeName): Return list of all CMTs in that CMT
-  - updateConfiguration(String: custMetadataTypeName, ??): Update aconfiguration for accountKey
-- Class: goToWebinarController
-  - getWebinarList()
-  - getWebinarInformation(String: idWebinar)
-
-
-Map<String, String>  configMap = ConfigurationController.viewEmailBuilderAppSettings();
-System.debug(configMap);
-GotoWebinarController.getWebinarList(configMap.get('accountKey'));
-
+## How to setup this component
 - Sign up LogMeIn Developer account
 - Setup AUth Provider and named credentials with following information
 Used https://salesforce.stackexchange.com/questions/252277/named-credential-for-gotowebinar-app-oauth-v2-0
@@ -25,11 +14,17 @@ Used https://salesforce.stackexchange.com/questions/252277/named-credential-for-
 
 - Enable "Manage list custom settings type " under "Schema Settings"
 
+
+- Push source code to the org
+
+## For packaging
+
 - Package Components
   - Auth Provider
   - Named Credentials
   - Custom Metadata Type: EmailBuilderAppSetting
     - Create a record with "accountKey" label
+  - Add Classes and LWCs
 
 
 
