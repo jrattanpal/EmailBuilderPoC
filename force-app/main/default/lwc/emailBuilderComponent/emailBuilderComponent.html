@@ -1,13 +1,29 @@
 <template>
-    <table id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" style="width:100%; border-collapse: collapse; word-break:break-word;">
-        <tr>
-            <td align="center">
-                Join the following webinar
+    <template if:false={renderJson}>
+        {msg}
+    </template> 
 
-                <lightning-formatted-rich-text value={webinarList}></lightning-formatted-rich-text>
+    <template if:true={webinarList}>
+        <template if:true={renderJson}>
 
-                {webinarList}
-            </td>
-        </tr>
-    </table>
+            <lightning-card>
+                <h3 slot="title">
+                    {webinarListJson.subject}
+                </h3>
+
+                <p class="slds-p-horizontal_small">
+                    {webinarListJson.description}
+                    <br/><br/>
+                    Start: {webinarListJson.startTime}
+                    <br/><br/>
+                    End: {webinarListJson.endTime}
+                </p>
+
+                <div slot="footer">
+                    Register: {webinarListJson.regUrl}
+                </div>
+            
+            </lightning-card>
+        </template> 
+    </template>
 </template>
