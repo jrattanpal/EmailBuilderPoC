@@ -2,6 +2,10 @@ public with sharing class GoToWebinarController {
     public static String getWebinarList(String accountKey){
         return getWebinarList(accountKey, '2020-03-13T10:00:00Z', '2022-03-13T22:00:00Z');
     }
+    //Make API call to GoToWebinar
+    //for accountKey, read the readme.md file
+    //If authentication token expires then We need to go to Named Credentials, edit GTW credentials and save it to kick off reauthenticaiton process
+    //This is because, Unfortunately, GTW does not have a correct implementation to send proper error code and salesforce doesn't understand that it needs to get refresh token
     public static String getWebinarList(String accountKey, String fromTime, String toTime){
         String webinarJson = null;
         try{

@@ -2,9 +2,11 @@
     <table id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" style="width:100%; border-collapse: collapse; word-break:break-word;">
         <tr>
             <td align="center">
-                This is Custom Email Builder Component
+                Join the following webinar
 
-                {webinarList}--
+                <lightning-formatted-rich-text value={webinarList}></lightning-formatted-rich-text>
+
+                {webinarList}
             </td>
         </tr>
     </table>
