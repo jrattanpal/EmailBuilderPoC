@@ -28,7 +28,7 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
             return myValues;
         }
         for(GoToWebinarJson.Webinars w: r.x_embedded.Webinars){
-            System.debug('w: ' + w);
+            //System.debug('w: ' + w);
             w.description = w.description.replaceAll('\r\n|\n|\r',' ');
 
             String webinarInfoJson = '{' + 
@@ -39,10 +39,7 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
                 '"endTime":"' + String.valueOf(w.times[0].endTime) + '",' + 
                 '"timeZone":"' + w.timeZone + '"' + 
             '}';
-            System.debug('webinarInfoJson: ' + webinarInfoJson);
-            //String webinarInfo = 'Register: ' + String.valueOf(w.registrationUrl) + ' <br> Test ';
-            String subject = String.valueOf(w.subject);
-            VisualEditor.DataRow value1 = new VisualEditor.DataRow(subject, webinarInfoJson);
+            VisualEditor.DataRow value1 = new VisualEditor.DataRow(String.valueOf(w.subject), webinarInfoJson);
             myValues.addRow(value1);
         }
         return myValues;
