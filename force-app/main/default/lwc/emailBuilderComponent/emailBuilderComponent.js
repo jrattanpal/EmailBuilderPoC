@@ -2,7 +2,9 @@ import { LightningElement, api } from 'lwc';
 export default class EmailBuilderComponent extends LightningElement {
     @api webinarList;
     webinarListJson;
+    //Controls when to render Webinar information in HTML
     renderJson = false;
+    //Stop renderedCallback() from falling in endless loop
     hasRendered = false;
     msg = 'Please select a webinar';
     
@@ -25,8 +27,6 @@ export default class EmailBuilderComponent extends LightningElement {
                 console.log('this.webinarList: undefined' );
             }
         }
-        //this.attachmentPoint = this.template.querySelector('div[innerhost=true]');
-        //this.attachmentPoint.innerHTML = this.webinarList;
     }
     /** */
 }
