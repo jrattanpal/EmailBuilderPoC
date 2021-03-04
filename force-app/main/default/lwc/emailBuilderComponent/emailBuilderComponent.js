@@ -9,7 +9,8 @@ export default class EmailBuilderComponent extends LightningElement {
     renderedCallback() {
         if(this.hasRendered === false){
             if(typeof(this.webinarList) != 'undefined'){
-                this.webinarListJson = JSON.parse(this.webinarList);
+                var webinarList = '{' + this.webinarList + '}';
+                this.webinarListJson = JSON.parse(webinarList);
                 
                 if(typeof(this.webinarListJson.regUrl) != 'undefined'){
                     //If true then show Webinar information
