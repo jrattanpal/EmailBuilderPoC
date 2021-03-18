@@ -8,7 +8,8 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningStatic__Email">            
-            <property label="Select Webinar" name="webinarInfo" type="String" datasource="apex://GoToWebinarPickList" required="false"  />
+            <property label="Select Webinar" name="webinarInfo" type="String" required="false" default="NOT USED" />
+            <property label="Select Webinar" name="htmlValue" type="String" datasource="apex://GoToWebinarPickList" required="false"  />
         </targetConfig>
         
     </targetConfigs>

@@ -9,15 +9,15 @@ export default class EmailBuilderComponent extends LightningElement {
     //renderJson = false;
     //hasRendered = false;
     //msg = 'Please select a webinar';
-    
+    @api webinarInfo;//delete this
     @api
-    set webinarInfo(value) {
+    set htmlValue(value) {
         if (this.customHtml) {
             this.customHtml.innerHTML = value;
         }
         this._htmlValue = value;
     }
-    get webinarInfo() {
+    get htmlValue() {
         return this._htmlValue;
     }
     
@@ -25,7 +25,7 @@ export default class EmailBuilderComponent extends LightningElement {
 
     renderedCallback() {
         this.customHtml = this.template.querySelector('div[ishtmlcontainer=true]');
-        this.customHtml.innerHTML = this.webinarInfo;
+        this.customHtml.innerHTML = this.htmlValue;
         /*
         if(this.hasRendered === false){
             if(typeof(this.webinarList) != 'undefined'){
