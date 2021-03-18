@@ -1,14 +1,32 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
+//import getContactName from '@salesforce/apex/GoToWebinarController.getContactName';
+
 export default class EmailBuilderComponent extends LightningElement {
-    @api webinarList;
-    webinarListJson;
-    //Controls when to render Webinar information in HTML
-    renderJson = false;
-    //Stop renderedCallback() from falling in endless loop
-    hasRendered = false;
-    msg = 'Please select a webinar';
+    //@api contactFirstName;
+
+    //@api webinarList;
+    //webinarListJson;
+    //renderJson = false;
+    //hasRendered = false;
+    //msg = 'Please select a webinar';
     
+    @api
+    set webinarInfo(value) {
+        if (this.customHtml) {
+            this.customHtml.innerHTML = value;
+        }
+        this._htmlValue = value;
+    }
+    get webinarInfo() {
+        return this._htmlValue;
+    }
+    
+
+
     renderedCallback() {
+        this.customHtml = this.template.querySelector('div[ishtmlcontainer=true]');
+        this.customHtml.innerHTML = this.webinarInfo;
+        /*
         if(this.hasRendered === false){
             if(typeof(this.webinarList) != 'undefined'){
                 var webinarList = '{' + this.webinarList + '}';
@@ -26,7 +44,8 @@ export default class EmailBuilderComponent extends LightningElement {
             }else{
                 console.log('this.webinarList: undefined' );
             }
+           
         }
+        */
     }
-    /** */
 }

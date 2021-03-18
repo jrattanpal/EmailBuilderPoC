@@ -5,14 +5,11 @@
     <masterLabel>EmailBuilder Component</masterLabel>
     <targets>
         <target>lightningStatic__Email</target>
-        <target>lightning__RecordPage</target>
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningStatic__Email">            
-            <property label="Select Webinar" name="webinarList" type="String" datasource="apex://GoToWebinarPickList" required="false" description="Select a Webinar" />
+            <property label="Select Webinar" name="webinarInfo" type="String" datasource="apex://GoToWebinarPickList" required="false"  />
         </targetConfig>
-        <targetConfig targets="lightning__RecordPage">            
-            <property label="Select Webinar" name="webinarList" type="String" datasource="apex://GoToWebinarPickList" required="false" description="Select a Webinar" />
-        </targetConfig>
+        
     </targetConfigs>
 </LightningComponentBundle>

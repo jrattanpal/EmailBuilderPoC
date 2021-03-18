@@ -6,7 +6,8 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
 
 
     global override VisualEditor.DataRow getDefaultValue(){
-        VisualEditor.DataRow defaultValue = new VisualEditor.DataRow('Select a Webinar', '"msg":"Select a Webinar","errCode":"selectWebinar"');
+        VisualEditor.DataRow defaultValue = new VisualEditor.DataRow('Select a Webinar', '<h2>Select a Webinar</h1>');
+        //VisualEditor.DataRow defaultValue = new VisualEditor.DataRow('Select a Webinar', '"msg":"Select a Webinar","errCode":"selectWebinar"');
         return defaultValue;
     }
     //We need to send JSON string back. However, due to a bug in AppBuilder (EmailBuilder), DynamicPickList components do not work on save because of {} (curly bracket)
@@ -24,15 +25,29 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
             //We also need to go to Named Credentials, edit GTW credentials and save it to kick off reauthenticaiton process
             //This is because, Unfortunately, GTW does not have a correct implementation to send proper error code and salesforce doesn't understand that it needs to get refresh token
             String errCode = r.int_err_code;
-            String msg = '"msg":"' + r.msg +'","errCode":"invalidToken"';
+            String msg = '<h2>Error: Invalid Token. Authenticate again in Named Credentials</h2>';
+            //String msg = '"msg":"' + r.msg +'","errCode":"invalidToken"';
             VisualEditor.DataRow value = new VisualEditor.DataRow(errCode, msg);
             myValues.addRow(value);
             return myValues;
         }
         for(GoToWebinarJson.Webinars w: r.x_embedded.Webinars){
-            //System.debug('w: ' + w);
+            System.debug('w: ' + w);
             w.description = w.description.replaceAll('\r\n|\n|\r',' ');
 
+
+            //String webinarInfoJson = 'Webinar Info';
+
+            String webinarInfo = '<lightning-card>' +
+                    '<h3 slot="title">' + w.subject +'</h3>' + 
+                    '<p class="slds-p-horizontal_small">' + w.description + '<br/><br/>' +
+                    'Start: ' + w.times[0].startTime  + '<br/><br/>' +
+                    'End: ' +  w.times[0].endTime  + '<br/><br/>' +
+                '</p>' + 
+                '<div slot="footer">Register: ' + w.registrationUrl + '</div>'+ 
+            '</lightning-card>';
+            
+            /*
             String webinarInfoJson = '' + 
                 '"regUrl":"' + String.valueOf(w.registrationUrl) + '",' + 
                 '"subject":"' + String.valueOf(w.subject) + '",' + 
@@ -41,7 +56,8 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
                 '"endTime":"' + String.valueOf(w.times[0].endTime) + '",' + 
                 '"timeZone":"' + w.timeZone + '"' + 
             '';
-            VisualEditor.DataRow value1 = new VisualEditor.DataRow(String.valueOf(w.subject), webinarInfoJson);
+            */            
+            VisualEditor.DataRow value1 = new VisualEditor.DataRow(String.valueOf(w.subject), webinarInfo);
             myValues.addRow(value1);
         }
         return myValues;

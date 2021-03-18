@@ -24,4 +24,11 @@ public with sharing class GoToWebinarController {
 
         return webinarJson;
     }
+/*
+    @AuraEnabled
+    public static string getContactName(String contactFirstName){
+        System.debug('contactFirstName: ' + contactFirstName);
+        return contactFirstName;
+    }
+    */
 }
