@@ -12,7 +12,7 @@ export default class HtmlPicklist extends LightningElement {
         return this._htmlValue;
     }
     renderedCallback() {
-        this.attachmentPoint = this.template.querySelector('div[innerhost=true]');
+        this.attachmentPoint = this.template.querySelector('div[ishtmlcontainer=true]');
         this.attachmentPoint.innerHTML = this.htmlValue;;
     }
 }
