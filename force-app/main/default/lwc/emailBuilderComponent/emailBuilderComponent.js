@@ -4,6 +4,7 @@ export default class EmailBuilderComponent extends LightningElement {
     @api
     set htmlValue(value) {
         if (this.customHtml) {
+            console.log('value::', value);
             this.customHtml.innerHTML = value;
         }
         this._htmlValue = value;
