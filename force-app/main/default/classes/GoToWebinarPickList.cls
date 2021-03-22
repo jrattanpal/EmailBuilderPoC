@@ -36,16 +36,15 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
 
             //String webinarInfoJson = 'Webinar Info';
 
-            String webinarInfo = '<lightning-card>' +
+            String webinarInfo = '<div class="card">' +
                     '<h2 >' + w.subject +'</h2>' + 
                     '<p >' + w.description + '<br/><br/>' +
-                    'Start ' + w.times[0].startTime  + '<br/><br/>' +
-                    'End ' +  w.times[0].endTime  + '<br/><br/>' +
+                    'Start: ' + w.times[0].startTime  + '<br/><br/>' +
+                    'End: ' +  w.times[0].endTime  + '<br/><br/>' +
                 '</p>' + 
                 '<div >Register ' + w.registrationUrl + '</div>'+ 
-            '</lightning-card>';
+            '</lightnindiv>';
 
-            webinarInfo = '<lightning-card><h2>'+w.subject+'</h2></lightning-card>';
             
             /*
             String webinarInfoJson = '' + 
