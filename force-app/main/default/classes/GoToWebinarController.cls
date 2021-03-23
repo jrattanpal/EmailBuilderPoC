@@ -13,10 +13,11 @@ public with sharing class GoToWebinarController {
             
             req.setEndpoint('callout:GoToWebinar_EmailBuilder_PoC/G2W/rest/v2/accounts/'+accountKey+'/webinars?fromTime='+fromTime+'&toTime='+toTime);
             req.setMethod('GET');
-            System.debug(req);
+            //System.debug(req);
             Http http = new Http();
             HTTPResponse res = http.send(req);
             webinarJson = res.getBody();
+            //System.debug(webinarJson);
 
         }catch(Exception e){
             System.debug('Exception:GoToWebinarController:getWebinarList(): ' + e.getMessage());

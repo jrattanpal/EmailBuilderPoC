@@ -43,19 +43,7 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
                     'End: ' +  w.times[0].endTime  + '<br/><br/>' +
                 '</p>' + 
                 '<div >Register ' + w.registrationUrl + '</div>'+ 
-            '</lightnindiv>';
-
-            
-            /*
-            String webinarInfoJson = '' + 
-                '"regUrl":"' + String.valueOf(w.registrationUrl) + '",' + 
-                '"subject":"' + String.valueOf(w.subject) + '",' + 
-                '"description":"' + String.valueOf(w.description) + '",' + 
-                '"startTime":"' + String.valueOf(w.times[0].startTime) + '",' + 
-                '"endTime":"' + String.valueOf(w.times[0].endTime) + '",' + 
-                '"timeZone":"' + w.timeZone + '"' + 
-            '';
-            */            
+            '</div>';   
             VisualEditor.DataRow value1 = new VisualEditor.DataRow(String.valueOf(w.subject), webinarInfo);
             myValues.addRow(value1);
         }
