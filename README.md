@@ -9,7 +9,7 @@ Used https://salesforce.stackexchange.com/questions/252277/named-credential-for-
 - Go to https://myaccount.logmeininc.com/
 - Login
 - Enable "Manage list custom settings type " under "Schema Settings"
-- Click on "Go to the Admin Center"
+- Click on "Go to the Admin Center"  at https://myaccount.logmeininc.com/
 - Get account from URL like below where "################" = accountKey
   - https://admin.logmeininc.com/portal/#accounts/################/users?filterType=usertype
 - Go to Custom Metadata Type
