@@ -8,11 +8,14 @@ Used https://salesforce.stackexchange.com/questions/252277/named-credential-for-
 - To get accountKey
 - Go to https://myaccount.logmeininc.com/
 - Login
-- Click on "Go to the Admin Center"
+- Enable "Manage list custom settings type " under "Schema Settings"
+- Click on "Go to the Admin Center"  at https://myaccount.logmeininc.com/
 - Get account from URL like below where "################" = accountKey
   - https://admin.logmeininc.com/portal/#accounts/################/users?filterType=usertype
-
-- Enable "Manage list custom settings type " under "Schema Settings"
+- Go to Custom Metadata Type
+- Click "Manage Records" for EmailBuilderAppSetting
+- Edit "accountKey" and enter above value in "GTWFieldValue"
+- Save
 
 
 - Push source code to the org
