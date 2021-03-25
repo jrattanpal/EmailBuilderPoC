@@ -31,7 +31,7 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
         }
         for(GoToWebinarJson.Webinars w: r.x_embedded.Webinars){
             //System.debug('w: ' + w);
-            w.description = w.description.replaceAll('\r\n|\n|\r',' ');
+            w.description = w.description?.replaceAll('\r\n|\n|\r',' ');
 
 
             //String webinarInfoJson = 'Webinar Info';
