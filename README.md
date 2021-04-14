@@ -1,3 +1,5 @@
+# Please note that this feature is currently under pilot and is not generally available.
+
 ## How to setup this component
 
 - CreateLogMeIn developer account to make API calls to Go To Webinar API: https://developer.logmeininc.com/
