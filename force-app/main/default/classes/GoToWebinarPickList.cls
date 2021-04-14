@@ -6,7 +6,8 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
 
 
     global override VisualEditor.DataRow getDefaultValue(){
-        VisualEditor.DataRow defaultValue = new VisualEditor.DataRow('Select a Webinar', '<h2>Select a Webinar</h1>');
+        //VisualEditor.DataRow defaultValue = new VisualEditor.DataRow('Select a Webinar', '<h2>Select a Webinar</h2>');
+        VisualEditor.DataRow defaultValue = new VisualEditor.DataRow('Select a Webinar', '{"msg":"Select a Webinar","errCode":"selectWebinar"}');
         return defaultValue;
     }
     //We need to send JSON string back. However, due to a bug in AppBuilder (EmailBuilder), DynamicPickList components do not work on save because of {} (curly bracket)
@@ -24,7 +25,8 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
             //We also need to go to Named Credentials, edit GTW credentials and save it to kick off reauthenticaiton process
             //This is because, Unfortunately, GTW does not have a correct implementation to send proper error code and salesforce doesn't understand that it needs to get refresh token
             String errCode = r.int_err_code;
-            String msg = '<h2>Error Invalid Token. Authenticate again in Named Credentials</h2>';
+            //String msg = '<h2>Error Invalid Token. Authenticate again in Named Credentials</h2>';
+            String msg = '{"msg":"' + r.msg +'","errCode":"invalidToken"}';
             VisualEditor.DataRow value = new VisualEditor.DataRow(errCode, msg);
             myValues.addRow(value);
             return myValues;
@@ -32,18 +34,17 @@ global with sharing class  GoToWebinarPickList extends VisualEditor.DynamicPickL
         for(GoToWebinarJson.Webinars w: r.x_embedded.Webinars){
             //System.debug('w: ' + w);
             w.description = w.description?.replaceAll('\r\n|\n|\r',' ');
+            w.description = w.description?.replaceAll('"','\"');
 
+            //Using JSON
+            String webinarInfo = '{' + 
+                '"regUrl":"' + String.valueOf(w.registrationUrl) + '",' + 
+                '"subject":"' + String.valueOf(w.subject) + '",' + 
+                '"endTime":"' + String.valueOf(w.times[0].endTime) + '",' + 
+                '"timeZone":"' + w.timeZone + '",' + 
+                '"description":"' + w.description + '"' +
+            '}';
 
-            //String webinarInfoJson = 'Webinar Info';
-
-            String webinarInfo = '<div class="card">' +
-                    '<h2 >' + w.subject +'</h2>' + 
-                    '<p >' + w.description + '<br/><br/>' +
-                    'Start: ' + w.times[0].startTime  + '<br/><br/>' +
-                    'End: ' +  w.times[0].endTime  + '<br/><br/>' +
-                '</p>' + 
-                '<div >Register ' + w.registrationUrl + '</div>'+ 
-            '</div>';   
             VisualEditor.DataRow value1 = new VisualEditor.DataRow(String.valueOf(w.subject), webinarInfo);
             myValues.addRow(value1);
         }
