@@ -1,6 +1,9 @@
 # Please note that this feature is currently under pilot and is not generally available.
 
 ## How to setup this component
+Demo Video: https://github.com/jrattanpal/EmailBuilderPoC/blob/master/assets/videos/EmailBuilderPoC_Demo.mp4
+
+## How to setup this component
 
 - CreateLogMeIn developer account to make API calls to Go To Webinar API: https://developer.logmeininc.com/
 - Setup oAuth client at https://developer.logmeininc.com/clients as per https://developer.goto.com/guides/HowTos/02_HOW_createClient/
