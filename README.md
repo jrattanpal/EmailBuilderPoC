@@ -1,7 +1,7 @@
 # Please note that this feature is currently under pilot and is not generally available.
 
 ## Component Demo
-Demo Video: https://github.com/jrattanpal/EmailBuilderPoC/blob/master/assets/videos/EmailBuilderPoC_Demo.mp4
+Demo Video: https://salesforce.vidyard.com/watch/gLuyE87DnmTs9bioVLE9i9?
 
 ## How to setup this component
 
